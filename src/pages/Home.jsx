@@ -19,7 +19,7 @@ function Home() {
     const nuevoArreglo = perros.map((perro)=>{
         return (
             <li key={perro._id}>
-                <p>{perro.name}</p>
+                <Link to={"/actualizar-perro/" + perro._id}>{perro.name}</Link>
                 <p>{perro.breed}</p>
                 <p>{perro.color}</p>
                 <p>{perro.age}</p>
