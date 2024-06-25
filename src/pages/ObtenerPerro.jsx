@@ -33,8 +33,18 @@ function ObtenerPerro() {
                   <Card.Img variant="top" src={perro.image} />
                   <Card.Body>
                     <Card.Title>Nombre: {perro.name}</Card.Title>
+                    <Card.Text>Raza: {perro.breed}</Card.Text>
+                    <Card.Text>Color: {perro.color}</Card.Text>
                     <Card.Text>Edad: {perro.age}</Card.Text>
                   </Card.Body>
+                  <Button
+                    as={Link}
+                    to={"/"}
+                    variant="success"
+                    size="sm"
+                  >
+                    Ver
+                  </Button>
                   <Button
                     as={Link}
                     to={"/actualizar-perro/" + perro._id}
