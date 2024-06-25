@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const apiUrl = "https://experimental-dogs-experimental-org.koyeb.app/api/v1/dogs"
 
-function Home() {
+function ObtenerPerro() {
     const [perros, setPerros] = useState([])
 
     useEffect(()=>{
@@ -37,4 +37,4 @@ function Home() {
   )
 }
 
-export default Home
+export default ObtenerPerro
