@@ -9,7 +9,7 @@ function Nave() {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/">Crear Perros</Nav.Link>
+            <Nav.Link href="/crear-peroo">Crear Perros</Nav.Link>
             <Nav.Link href="/">Link</Nav.Link>
           </Nav>
         </Navbar.Collapse>
