@@ -1,5 +1,6 @@
-import React from "react";
-import { Container } from "react-bootstrap";
+import React, { useState } from "react";
+import { Container, Button, Form, InputGroup } from "react-bootstrap";
+import axios from "axios";
 
 const apiUrl =
   "https://experimental-dogs-experimental-org.koyeb.app/api/v1/dogs";
@@ -26,16 +27,16 @@ function CrearPerro() {
   };
 
   const valorName = (evento)=>{setName(evento.target.value)}  
-  const valorBreed = (evento)=>{setName(evento.target.value)}
-  const valorImage = (evento)=>{setName(evento.target.value)}
-  const valorColor = (evento)=>{setName(evento.target.value)}
-  const valorAge = (evento)=>{setName(evento.target.value)}
-  const valorFavoriteToy = (evento)=>{setName(evento.target.value)}
-  const valorPersonality = (evento)=>{setName(evento.target.value)}
-  const valorBio = (evento)=>{setName(evento.target.value)}
+  const valorBreed = (evento)=>{setBreed(evento.target.value)}
+  const valorImage = (evento)=>{setImage(evento.target.value)}
+  const valorColor = (evento)=>{setColor(evento.target.value)}
+  const valorAge = (evento)=>{setAge(evento.target.value)}
+  const valorFavoriteToy = (evento)=>{setFavoriteToy(evento.target.value)}
+  const valorPersonality = (evento)=>{setPersonality(evento.target.value)}
+  const valorBio = (evento)=>{setBio(evento.target.value)}
 
   const enviarDatos = ()=>{
-    if (nombre && imagen && edad && poder != "") {
+    if (name && breed && image && color && age && favoriteToy && personality && bio != "") {
         crearPerro();
       } else {
         alert("Completa los datos");
