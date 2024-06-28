@@ -1,38 +1,159 @@
-import React, { useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
-import axios from 'axios'
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import axios from "axios";
+import useForm from "./useForm";
+import { Container, Button, Form, InputGroup } from "react-bootstrap";
 
-const apiUrl = "https://experimental-dogs-experimental-org.koyeb.app/api/v1/dogs/"
+function ActualizarPerro({ apiUrl }) {
+  const params = useParams();
+  const navigate = useNavigate();
+  const { formulario, obtenerFormulario, setFormulario } = useForm({
+    name: "",
+    breed: "",
+    image: "",
+    color: "",
+    age: "",
+    favoriteToy: "",
+    personality: "",
+    bio: ""
+  });
 
-function ActualizarPerro() {
-    const params = useParams()
-    const navigate = useNavigate()
-    const [name, setName] = useState([])
+  const modificar = () => {
+    const url = apiUrl + "/" + params.id;
+    const data = { name: formulario.name };
+    axios
+      .put(url, data)
+      .then((res) => {
+        console.log(res);
+        navigate(-1);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-    console.log(params)
-
-    const modificar = () => {
-        const data = {name: name}
-        axios.put(apiUrl + params.id, data)
-        .then((res)=>{
-            console.log(res)
-            navigate("/")
-        }).catch((error) => {
-            console.log(error)
-        })
-    }
-
-    const inputChange = (event)=>{
-        setName(event.target.value)
-    }
+  useEffect(() => {
+    const urlId = apiUrl + "/" + params.id;
+    axios
+      .get(urlId)
+      .then((res) => {
+        setFormulario(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
-    <div>
-        <h1>Actualizar Perro</h1>
-        <input type="text" placeholder='Nombre' value={name} onChange={inputChange}/>
-        <button onClick={modificar}>Actualizar</button>
-    </div>
-  )
+    <>
+      <Container>
+        <InputGroup className="mb-3">
+          <Form.Control
+            onChange={(e) => {
+              obtenerFormulario(e);
+            }}
+            name="name"
+            value={formulario.name}
+            placeholder="Nombre de Perro"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+          />
+        </InputGroup>
+
+        <InputGroup className="mb-3">
+          <Form.Control
+            onChange={(e) => {
+              obtenerFormulario(e);
+            }}
+            name="breed"
+            value={formulario.breed}
+            placeholder="Raza del Perro"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+          />
+        </InputGroup>
+
+        <InputGroup className="mb-3">
+          <Form.Control
+            onChange={(e) => {
+              obtenerFormulario(e);
+            }}
+            name="image"
+            value={formulario.image}
+            placeholder="Imagen del Perro"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+          />
+        </InputGroup>
+
+        <InputGroup className="mb-3">
+          <Form.Control
+            onChange={(e) => {
+              obtenerFormulario(e);
+            }}
+            name="color"
+            value={formulario.color}
+            placeholder="Color del Perro"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+          />
+        </InputGroup>
+
+        <InputGroup className="mb-3">
+          <Form.Control
+            onChange={(e) => {
+              obtenerFormulario(e);
+            }}
+            name="age"
+            value={formulario.age}
+            placeholder="Edad del Perro"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+          />
+        </InputGroup>
+
+        <InputGroup className="mb-3">
+          <Form.Control
+            onChange={(e) => {
+              obtenerFormulario(e);
+            }}
+            name="favoriteToy"
+            value={formulario.favoriteToy}
+            placeholder="Juguete favorito del Perro"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+          />
+        </InputGroup>
+
+        <InputGroup className="mb-3">
+          <Form.Control
+            onChange={(e) => {
+              obtenerFormulario(e);
+            }}
+            name="personality"
+            value={formulario.personality}
+            placeholder="Personalidad del Perro"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+          />
+        </InputGroup>
+
+        <InputGroup className="mb-3">
+          <Form.Control
+            onChange={(e) => {
+              obtenerFormulario(e);
+            }}
+            name="bio"
+            value={formulario.bio}
+            placeholder="Biografia del Perro"
+            aria-label="Recipient's username"
+            aria-describedby="basic-addon2"
+          />
+        </InputGroup>
+        <Button onClick={modificar}>Crear Perro</Button>
+      </Container>
+    </>
+  );
 }
 
-export default ActualizarPerro
+export default ActualizarPerro;

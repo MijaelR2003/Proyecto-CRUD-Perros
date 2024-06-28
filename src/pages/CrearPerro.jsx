@@ -1,11 +1,9 @@
 import React, { useState } from "react";
 import { Container, Button, Form, InputGroup } from "react-bootstrap";
 import axios from "axios";
+import useForm from "./useForm";
 
-const apiUrl =
-  "https://experimental-dogs-experimental-org.koyeb.app/api/v1/dogs";
-
-function CrearPerro() {
+function CrearPerro({ apiUrl }) {
   const [name, setName] = useState("");
   const [breed, setBreed] = useState("");
   const [image, setImage] = useState("");
@@ -15,7 +13,7 @@ function CrearPerro() {
   const [personality, setPersonality] = useState("");
   const [bio, setBio] = useState("");
 
-  const nuevoPerro = {
+  const { formulario, obtenerFormulario } = useForm({
     name: name,
     breed: breed,
     image: image,
@@ -24,33 +22,45 @@ function CrearPerro() {
     favoriteToy: favoriteToy,
     personality: personality,
     bio: bio,
+  });
+
+  const enviarDatos = () => {
+    if (
+      formulario.name &&
+      formulario.breed &&
+      formulario.image &&
+      formulario.color &&
+      formulario.age &&
+      formulario.favoriteToy &&
+      formulario.personality &&
+      formulario.bio !== ""
+    ) {
+      crearPerro();
+    } else {
+      alert("Completa los datos");
+      console.log(".", name);
+    }
   };
 
-  const valorName = (evento)=>{setName(evento.target.value)}  
-  const valorBreed = (evento)=>{setBreed(evento.target.value)}
-  const valorImage = (evento)=>{setImage(evento.target.value)}
-  const valorColor = (evento)=>{setColor(evento.target.value)}
-  const valorAge = (evento)=>{setAge(evento.target.value)}
-  const valorFavoriteToy = (evento)=>{setFavoriteToy(evento.target.value)}
-  const valorPersonality = (evento)=>{setPersonality(evento.target.value)}
-  const valorBio = (evento)=>{setBio(evento.target.value)}
-
-  const enviarDatos = ()=>{
-    if (name && breed && image && color && age && favoriteToy && personality && bio != "") {
-        crearPerro();
-      } else {
-        alert("Completa los datos");
-      }
-  }
-
   function crearPerro() {
+    const data = {
+      name: formulario.name,
+      breed: formulario.breed,
+      image: formulario.image,
+      color: formulario.color,
+      age: formulario.age,
+      favoriteToy: formulario.favoriteToy,
+      personality: formulario.personality,
+      bio: formulario.bio,
+    };
     axios
-      .post(apiUrl, nuevoPerro)
+      .post(apiUrl, data)
       .then((res) => {
         console.log("Creado con exito", res);
       })
       .catch((error) => {
         console.log(error);
+        alert("Algo salio mal");
       });
   }
 
@@ -59,7 +69,10 @@ function CrearPerro() {
       <Container>
         <InputGroup className="mb-3">
           <Form.Control
-            onChange={valorName}
+            onChange={(e) => {
+              obtenerFormulario(e);
+            }}
+            name="name"
             placeholder="Nombre de Perro"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
@@ -68,7 +81,10 @@ function CrearPerro() {
 
         <InputGroup className="mb-3">
           <Form.Control
-            onChange={valorBreed}
+            onChange={(e) => {
+              obtenerFormulario(e);
+            }}
+            name="breed"
             placeholder="Raza del Perro"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
@@ -77,7 +93,10 @@ function CrearPerro() {
 
         <InputGroup className="mb-3">
           <Form.Control
-            onChange={valorImage}
+            onChange={(e) => {
+              obtenerFormulario(e);
+            }}
+            name="image"
             placeholder="Imagen del Perro"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
@@ -86,7 +105,10 @@ function CrearPerro() {
 
         <InputGroup className="mb-3">
           <Form.Control
-            onChange={valorColor}
+            onChange={(e) => {
+              obtenerFormulario(e);
+            }}
+            name="color"
             placeholder="Color del Perro"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
@@ -95,7 +117,10 @@ function CrearPerro() {
 
         <InputGroup className="mb-3">
           <Form.Control
-            onChange={valorAge}
+            onChange={(e) => {
+              obtenerFormulario(e);
+            }}
+            name="age"
             placeholder="Edad del Perro"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
@@ -104,7 +129,10 @@ function CrearPerro() {
 
         <InputGroup className="mb-3">
           <Form.Control
-            onChange={valorFavoriteToy}
+            onChange={(e) => {
+              obtenerFormulario(e);
+            }}
+            name="favoriteToy"
             placeholder="Juguete favorito del Perro"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
@@ -113,7 +141,10 @@ function CrearPerro() {
 
         <InputGroup className="mb-3">
           <Form.Control
-            onChange={valorPersonality}
+            onChange={(e) => {
+              obtenerFormulario(e);
+            }}
+            name="personality"
             placeholder="Personalidad del Perro"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
@@ -122,13 +153,16 @@ function CrearPerro() {
 
         <InputGroup className="mb-3">
           <Form.Control
-            onChange={valorBio}
+            onChange={(e) => {
+              obtenerFormulario(e);
+            }}
+            name="bio"
             placeholder="Biografia del Perro"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
           />
         </InputGroup>
-        <Button onClick={enviarDatos}>Crear Unicornio</Button>
+        <Button onClick={enviarDatos}>Crear Perro</Button>
       </Container>
     </>
   );

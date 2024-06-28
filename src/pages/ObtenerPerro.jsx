@@ -3,10 +3,7 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Button, Col, Row, Container, Spinner, Card } from "react-bootstrap";
 
-const apiUrl =
-  "https://experimental-dogs-experimental-org.koyeb.app/api/v1/dogs";
-
-function ObtenerPerro() {
+function ObtenerPerro({ apiUrl }) {
   const [perros, setPerros] = useState([]);
 
   useEffect(() => {
