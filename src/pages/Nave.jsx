@@ -14,7 +14,7 @@ function Nave() {
   }
 
   const ver = ()=>{
-    navigate(-1)
+    navigate("/crear-perro")
   }
   
   return (

@@ -34,25 +34,26 @@ function ObtenerPerro({ apiUrl }) {
                     <Card.Text>Color: {perro.color}</Card.Text>
                     <Card.Text>Edad: {perro.age}</Card.Text>
                   </Card.Body>
-                  <Button
-                    as={Link}
-                    to={"/"}
-                    variant="success"
-                    size="sm"
-                  >
+
+                  <Button as={Link} to={"/"} variant="success" size="sm">
                     Ver
                   </Button>
-                  <Button
-                    as={Link}
-                    to={"/actualizar-perro/" + perro._id}
-                    variant="primary"
-                    size="sm"
-                  >
-                    Actualizar
-                  </Button>{" "}
-                  <Button as={Link} to={"/"} variant="danger" size="sm">
-                    Eliminar
-                  </Button>{" "}
+                 <Container>
+                  <Row>
+                    <Button
+                      as={Link}
+                      to={"/actualizar-perro/" + perro._id}
+                      variant="primary"
+                      size="sm"
+                      style={{width:"50%"}}
+                    >
+                      Actualizar
+                    </Button>{" "}
+                    <Button as={Link} to={"/"} variant="danger" size="sm"style={{width:"50%"}}>
+                      Eliminar
+                    </Button>{" "}
+                    </Row>
+                    </Container>
                 </Card>
               </Col>
             ))
