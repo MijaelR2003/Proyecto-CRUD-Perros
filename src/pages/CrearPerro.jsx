@@ -13,7 +13,7 @@ function CrearPerro({ apiUrl }) {
   const [favoriteToy, setFavoriteToy] = useState("");
   const [personality, setPersonality] = useState("");
   const [bio, setBio] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const { formulario, obtenerFormulario } = useForm({
     name: name,
@@ -38,7 +38,7 @@ function CrearPerro({ apiUrl }) {
       formulario.bio !== ""
     ) {
       crearPerro();
-      navigate("/")
+      navigate("/");
     } else {
       alert("Completa los datos");
       console.log(".", name);
@@ -54,7 +54,7 @@ function CrearPerro({ apiUrl }) {
       age: formulario.age,
       favoriteToy: formulario.favoriteToy,
       personality: formulario.personality,
-      bio: formulario.bio
+      bio: formulario.bio,
     };
     axios
       .post(apiUrl, data)
@@ -80,9 +80,7 @@ function CrearPerro({ apiUrl }) {
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
           />
-        </InputGroup>
 
-        <InputGroup className="mb-3">
           <Form.Control
             onChange={(e) => {
               obtenerFormulario(e);
@@ -116,9 +114,7 @@ function CrearPerro({ apiUrl }) {
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
           />
-        </InputGroup>
 
-        <InputGroup className="mb-3">
           <Form.Control
             onChange={(e) => {
               obtenerFormulario(e);
@@ -140,9 +136,7 @@ function CrearPerro({ apiUrl }) {
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
           />
-        </InputGroup>
 
-        <InputGroup className="mb-3">
           <Form.Control
             onChange={(e) => {
               obtenerFormulario(e);

@@ -5,18 +5,18 @@ import { Container, Button, Form, InputGroup } from "react-bootstrap";
 import useForm from "./useForm";
 
 function VerPerros({ apiUrl }) {
-    const params = useParams()
-    const { formulario, obtenerFormulario, setFormulario } = useForm({
-        name: "",
-        breed: "",
-        image: "",
-        color: "",
-        age: "",
-        favoriteToy: "",
-        personality: "",
-        bio: ""
-      });
-      
+  const params = useParams();
+  const { formulario, obtenerFormulario, setFormulario } = useForm({
+    name: "",
+    breed: "",
+    image: "",
+    color: "",
+    age: "",
+    favoriteToy: "",
+    personality: "",
+    bio: "",
+  });
+
   useEffect(() => {
     const urlId = apiUrl + "/" + params.id;
     axios
@@ -31,7 +31,7 @@ function VerPerros({ apiUrl }) {
 
   return (
     <>
-      <Container>
+      <Container className="mt-4">
         <InputGroup className="mb-3">
           <Form.Control
             onChange={(e) => {
@@ -44,9 +44,7 @@ function VerPerros({ apiUrl }) {
             aria-describedby="basic-addon2"
             disabled
           />
-        </InputGroup>
 
-        <InputGroup className="mb-3">
           <Form.Control
             onChange={(e) => {
               obtenerFormulario(e);
@@ -86,9 +84,7 @@ function VerPerros({ apiUrl }) {
             aria-describedby="basic-addon2"
             disabled
           />
-        </InputGroup>
 
-        <InputGroup className="mb-3">
           <Form.Control
             onChange={(e) => {
               obtenerFormulario(e);
@@ -114,9 +110,7 @@ function VerPerros({ apiUrl }) {
             aria-describedby="basic-addon2"
             disabled
           />
-        </InputGroup>
 
-        <InputGroup className="mb-3">
           <Form.Control
             onChange={(e) => {
               obtenerFormulario(e);
@@ -143,7 +137,9 @@ function VerPerros({ apiUrl }) {
             disabled
           />
         </InputGroup>
-        <Button as={Link} to={"/"}>Volver</Button>
+        <Button as={Link} to={"/"}>
+          Volver
+        </Button>
       </Container>
     </>
   );
