@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Container, Button, Form, InputGroup } from "react-bootstrap";
+import { Container, Button, Form, InputGroup, FloatingLabel } from "react-bootstrap";
 import axios from "axios";
 import useForm from "./useForm";
 import { useNavigate } from "react-router-dom";
@@ -71,16 +71,27 @@ function CrearPerro({ apiUrl }) {
     <>
       <Container>
         <InputGroup className="mb-3">
+        <FloatingLabel
+        controlId="floatingInput"
+        label="Nombre del Perro"
+        className="m-0"
+        >
           <Form.Control
             onChange={(e) => {
               obtenerFormulario(e);
             }}
             name="name"
-            placeholder="Nombre de Perro"
+            placeholder="Nombre del Perro"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
           />
+          </FloatingLabel>
 
+          <FloatingLabel
+        controlId="floatingInput"
+        label="Raza del Perro"
+        className="m-0"
+        >
           <Form.Control
             onChange={(e) => {
               obtenerFormulario(e);
@@ -90,9 +101,16 @@ function CrearPerro({ apiUrl }) {
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
           />
+          </FloatingLabel>
+          
         </InputGroup>
 
         <InputGroup className="mb-3">
+        <FloatingLabel
+        controlId="floatingInput"
+        label="Imagen del Perro"
+        className="m-0"
+        >
           <Form.Control
             onChange={(e) => {
               obtenerFormulario(e);
@@ -102,9 +120,15 @@ function CrearPerro({ apiUrl }) {
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
           />
+          </FloatingLabel>
         </InputGroup>
 
         <InputGroup className="mb-3">
+        <FloatingLabel
+        controlId="floatingInput"
+        label="Color del Perro"
+        className="m-0"
+        >
           <Form.Control
             onChange={(e) => {
               obtenerFormulario(e);
@@ -114,7 +138,12 @@ function CrearPerro({ apiUrl }) {
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
           />
-
+          </FloatingLabel>
+<FloatingLabel
+        controlId="floatingInput"
+        label="Edad del Perro"
+        className="m-0"
+        >
           <Form.Control
             onChange={(e) => {
               obtenerFormulario(e);
@@ -124,9 +153,15 @@ function CrearPerro({ apiUrl }) {
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
           />
+          </FloatingLabel>
         </InputGroup>
 
         <InputGroup className="mb-3">
+        <FloatingLabel
+        controlId="floatingInput"
+        label="Juguete favorito del Perro"
+        className="m-0"
+        >
           <Form.Control
             onChange={(e) => {
               obtenerFormulario(e);
@@ -136,7 +171,12 @@ function CrearPerro({ apiUrl }) {
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
           />
-
+          </FloatingLabel>
+<FloatingLabel
+        controlId="floatingInput"
+        label="Personalidad del Perro"
+        className="m-0"
+        >
           <Form.Control
             onChange={(e) => {
               obtenerFormulario(e);
@@ -146,9 +186,14 @@ function CrearPerro({ apiUrl }) {
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
           />
+          </FloatingLabel>
         </InputGroup>
 
         <InputGroup className="mb-3">
+        <FloatingLabel
+        controlId="floatingInput"
+        label="Biografia del Perro"
+        >
           <Form.Control
             onChange={(e) => {
               obtenerFormulario(e);
@@ -158,6 +203,7 @@ function CrearPerro({ apiUrl }) {
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
           />
+          </FloatingLabel>
         </InputGroup>
         <Button onClick={enviarDatos}>Crear Perro</Button>
       </Container>
