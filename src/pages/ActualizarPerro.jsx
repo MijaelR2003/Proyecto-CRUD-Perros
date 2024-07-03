@@ -150,7 +150,7 @@ function ActualizarPerro({ apiUrl }) {
             aria-describedby="basic-addon2"
           />
         </InputGroup>
-        <Button onClick={modificar}>Crear Perro</Button>
+        <Button onClick={modificar}>Actualizar Perro</Button>
       </Container>
     </>
   );

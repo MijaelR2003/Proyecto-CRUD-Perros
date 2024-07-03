@@ -35,7 +35,7 @@ function ObtenerPerro({ apiUrl }) {
                     <Card.Text>Edad: {perro.age}</Card.Text>
                   </Card.Body>
 
-                  <Button as={Link} to={"/"} variant="success" size="sm">
+                  <Button as={Link} to={"/ver-perro/" + perro._id} variant="success" size="sm">
                     Ver
                   </Button>
                  <Container>

@@ -1,71 +1,33 @@
-import React, { useState } from "react";
-import { Container, Button, Form, InputGroup } from "react-bootstrap";
+import React, { useEffect } from "react";
 import axios from "axios";
+import { useParams, Link } from "react-router-dom";
+import { Container, Button, Form, InputGroup } from "react-bootstrap";
 import useForm from "./useForm";
-import { useNavigate } from "react-router-dom";
 
-function CrearPerro({ apiUrl }) {
-  const [name, setName] = useState("");
-  const [breed, setBreed] = useState("");
-  const [image, setImage] = useState("");
-  const [color, setColor] = useState("");
-  const [age, setAge] = useState("");
-  const [favoriteToy, setFavoriteToy] = useState("");
-  const [personality, setPersonality] = useState("");
-  const [bio, setBio] = useState("");
-  const navigate = useNavigate()
-
-  const { formulario, obtenerFormulario } = useForm({
-    name: name,
-    breed: breed,
-    image: image,
-    color: color,
-    age: age,
-    favoriteToy: favoriteToy,
-    personality: personality,
-    bio: bio,
-  });
-
-  const enviarDatos = () => {
-    if (
-      formulario.name &&
-      formulario.breed &&
-      formulario.image &&
-      formulario.color &&
-      formulario.age &&
-      formulario.favoriteToy &&
-      formulario.personality &&
-      formulario.bio !== ""
-    ) {
-      crearPerro();
-      navigate("/")
-    } else {
-      alert("Completa los datos");
-      console.log(".", name);
-    }
-  };
-
-  function crearPerro() {
-    const data = {
-      name: formulario.name,
-      breed: formulario.breed,
-      image: formulario.image,
-      color: formulario.color,
-      age: formulario.age,
-      favoriteToy: formulario.favoriteToy,
-      personality: formulario.personality,
-      bio: formulario.bio
-    };
-    axios
-      .post(apiUrl, data)
-      .then((res) => {
-        console.log("Creado con exito", res);
-      })
-      .catch((error) => {
-        console.log(error);
-        alert("Algo salio mal");
+function VerPerros({ apiUrl }) {
+    const params = useParams()
+    const { formulario, obtenerFormulario, setFormulario } = useForm({
+        name: "",
+        breed: "",
+        image: "",
+        color: "",
+        age: "",
+        favoriteToy: "",
+        personality: "",
+        bio: ""
       });
-  }
+      
+  useEffect(() => {
+    const urlId = apiUrl + "/" + params.id;
+    axios
+      .get(urlId)
+      .then((res) => {
+        setFormulario(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
 
   return (
     <>
@@ -76,9 +38,11 @@ function CrearPerro({ apiUrl }) {
               obtenerFormulario(e);
             }}
             name="name"
+            value={formulario.name}
             placeholder="Nombre de Perro"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
+            disabled
           />
         </InputGroup>
 
@@ -88,9 +52,11 @@ function CrearPerro({ apiUrl }) {
               obtenerFormulario(e);
             }}
             name="breed"
+            value={formulario.breed}
             placeholder="Raza del Perro"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
+            disabled
           />
         </InputGroup>
 
@@ -100,9 +66,11 @@ function CrearPerro({ apiUrl }) {
               obtenerFormulario(e);
             }}
             name="image"
+            value={formulario.image}
             placeholder="Imagen del Perro"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
+            disabled
           />
         </InputGroup>
 
@@ -112,9 +80,11 @@ function CrearPerro({ apiUrl }) {
               obtenerFormulario(e);
             }}
             name="color"
+            value={formulario.color}
             placeholder="Color del Perro"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
+            disabled
           />
         </InputGroup>
 
@@ -124,9 +94,11 @@ function CrearPerro({ apiUrl }) {
               obtenerFormulario(e);
             }}
             name="age"
+            value={formulario.age}
             placeholder="Edad del Perro"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
+            disabled
           />
         </InputGroup>
 
@@ -136,9 +108,11 @@ function CrearPerro({ apiUrl }) {
               obtenerFormulario(e);
             }}
             name="favoriteToy"
+            value={formulario.favoriteToy}
             placeholder="Juguete favorito del Perro"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
+            disabled
           />
         </InputGroup>
 
@@ -148,9 +122,11 @@ function CrearPerro({ apiUrl }) {
               obtenerFormulario(e);
             }}
             name="personality"
+            value={formulario.personality}
             placeholder="Personalidad del Perro"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
+            disabled
           />
         </InputGroup>
 
@@ -160,15 +136,17 @@ function CrearPerro({ apiUrl }) {
               obtenerFormulario(e);
             }}
             name="bio"
+            value={formulario.bio}
             placeholder="Biografia del Perro"
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
+            disabled
           />
         </InputGroup>
-        <Button onClick={enviarDatos}>Crear Perro</Button>
+        <Button as={Link} to={"/"}>Volver</Button>
       </Container>
     </>
   );
 }
 
-export default CrearPerro;
+export default VerPerros;

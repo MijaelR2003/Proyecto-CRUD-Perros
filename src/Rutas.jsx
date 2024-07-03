@@ -4,12 +4,11 @@ import ObtenerPerro from "./pages/ObtenerPerro";
 import ActualizarPerro from "./pages/ActualizarPerro";
 import Nave from "./pages/Nave";
 import CrearPerro from "./pages/CrearPerro";
+import VerPerros from "./pages/VerPerros";
 
 function Rutas() {
-  //const apiUrl =
-  //"https://experimental-dogs-experimental-org.koyeb.app/api/v1/dogs";
   const apiUrl =
-    "https:experimental-unicorns-experimental-org.koyeb.app/api/v1/unicorns";
+    "https://sample-dogs-api.netlify.app/api/v1//dogs";
 
   return (
     <>
@@ -18,6 +17,10 @@ function Rutas() {
         <Routes>
           <Route path="/" element={<ObtenerPerro apiUrl={apiUrl} />} />
           <Route path="/crear-perro" element={<CrearPerro apiUrl={apiUrl} />} />
+          <Route
+            path="/ver-perro/:id"
+            element={<VerPerros apiUrl={apiUrl} />}
+          />
           <Route
             path="/actualizar-perro/:id"
             element={<ActualizarPerro apiUrl={apiUrl} />}
