@@ -15,7 +15,7 @@ function ActualizarPerro({ apiUrl }) {
     age: "",
     favoriteToy: "",
     personality: "",
-    bio: ""
+    bio: "",
   });
 
   const modificar = () => {
@@ -58,9 +58,7 @@ function ActualizarPerro({ apiUrl }) {
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
           />
-        </InputGroup>
 
-        <InputGroup className="mb-3">
           <Form.Control
             onChange={(e) => {
               obtenerFormulario(e);
@@ -97,9 +95,7 @@ function ActualizarPerro({ apiUrl }) {
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
           />
-        </InputGroup>
 
-        <InputGroup className="mb-3">
           <Form.Control
             onChange={(e) => {
               obtenerFormulario(e);
@@ -123,9 +119,7 @@ function ActualizarPerro({ apiUrl }) {
             aria-label="Recipient's username"
             aria-describedby="basic-addon2"
           />
-        </InputGroup>
 
-        <InputGroup className="mb-3">
           <Form.Control
             onChange={(e) => {
               obtenerFormulario(e);
