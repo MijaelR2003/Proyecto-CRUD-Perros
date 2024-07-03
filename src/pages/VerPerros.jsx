@@ -33,6 +33,7 @@ function VerPerros({ apiUrl }) {
     <>
       <Container className="mt-4">
         <InputGroup className="mb-3">
+          <Form.Label className="mx-2 mt-1">Nombre:</Form.Label>
           <Form.Control
             onChange={(e) => {
               obtenerFormulario(e);
@@ -44,7 +45,7 @@ function VerPerros({ apiUrl }) {
             aria-describedby="basic-addon2"
             disabled
           />
-
+          <Form.Label className="mx-5 mt-1">Raza:</Form.Label>
           <Form.Control
             onChange={(e) => {
               obtenerFormulario(e);
@@ -57,6 +58,7 @@ function VerPerros({ apiUrl }) {
             disabled
           />
         </InputGroup>
+        <Form.Label className="mx-2 mt-1">Imagen del Perro</Form.Label>
 
         <InputGroup className="mb-3">
           <Form.Control
@@ -73,6 +75,7 @@ function VerPerros({ apiUrl }) {
         </InputGroup>
 
         <InputGroup className="mb-3">
+          <Form.Label className="mx-3 mt-1">Color:</Form.Label>
           <Form.Control
             onChange={(e) => {
               obtenerFormulario(e);
@@ -85,6 +88,7 @@ function VerPerros({ apiUrl }) {
             disabled
           />
 
+          <Form.Label className="mx-5 mt-1">Edad:</Form.Label>
           <Form.Control
             onChange={(e) => {
               obtenerFormulario(e);
@@ -99,6 +103,7 @@ function VerPerros({ apiUrl }) {
         </InputGroup>
 
         <InputGroup className="mb-3">
+          <Form.Label className="mx-2 mt-1">Juguete:</Form.Label>
           <Form.Control
             onChange={(e) => {
               obtenerFormulario(e);
@@ -110,7 +115,7 @@ function VerPerros({ apiUrl }) {
             aria-describedby="basic-addon2"
             disabled
           />
-
+          <Form.Label className="mx-4 mt-1">Personalidad:</Form.Label>
           <Form.Control
             onChange={(e) => {
               obtenerFormulario(e);
@@ -123,7 +128,7 @@ function VerPerros({ apiUrl }) {
             disabled
           />
         </InputGroup>
-
+        <Form.Label className="mx-2 mt-1">Biografia del Perro:</Form.Label>
         <InputGroup className="mb-3">
           <Form.Control
             onChange={(e) => {
