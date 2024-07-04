@@ -38,7 +38,7 @@ function CrearPerro({ apiUrl }) {
       formulario.bio !== ""
     ) {
       crearPerro();
-      navigate("/");
+      
     } else {
       alert("Completa los datos");
       console.log(".", name);
@@ -60,6 +60,7 @@ function CrearPerro({ apiUrl }) {
       .post(apiUrl, data)
       .then((res) => {
         console.log("Creado con exito", res);
+        navigate("/")
       })
       .catch((error) => {
         console.log(error);
