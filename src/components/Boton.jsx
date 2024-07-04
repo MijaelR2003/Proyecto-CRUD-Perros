@@ -1,9 +1,19 @@
-import React from 'react'
+import React from "react";
+import { Link } from 'react-router-dom'
+import { Button } from 'react-bootstrap'
 
-function Boton() {
+function Boton( props ) {
   return (
-    <div>Boton</div>
-  )
+    <>
+      <Button
+        as={Link}
+        size="sm"
+        {...props}
+      >
+        {props.children}
+      </Button>
+    </>
+  );
 }
 
-export default Boton
+export default Boton;
