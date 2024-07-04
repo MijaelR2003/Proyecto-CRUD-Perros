@@ -5,25 +5,17 @@ import useForm from "./useForm";
 import { useNavigate } from "react-router-dom";
 
 function CrearPerro({ apiUrl }) {
-  const [name, setName] = useState("");
-  const [breed, setBreed] = useState("");
-  const [image, setImage] = useState("");
-  const [color, setColor] = useState("");
-  const [age, setAge] = useState("");
-  const [favoriteToy, setFavoriteToy] = useState("");
-  const [personality, setPersonality] = useState("");
-  const [bio, setBio] = useState("");
-  const navigate = useNavigate();
+  const navigate = useNavigate()
 
   const { formulario, obtenerFormulario } = useForm({
-    name: name,
-    breed: breed,
-    image: image,
-    color: color,
-    age: age,
-    favoriteToy: favoriteToy,
-    personality: personality,
-    bio: bio,
+    name: "",
+    breed: "",
+    image: "",
+    color: "",
+    age: "",
+    favoriteToy: "",
+    personality: "",
+    bio: "",
   });
 
   const enviarDatos = () => {
@@ -38,10 +30,8 @@ function CrearPerro({ apiUrl }) {
       formulario.bio !== ""
     ) {
       crearPerro();
-      
     } else {
       alert("Completa los datos");
-      console.log(".", name);
     }
   };
 
