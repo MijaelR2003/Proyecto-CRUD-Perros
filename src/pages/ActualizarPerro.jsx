@@ -20,7 +20,16 @@ function ActualizarPerro({ apiUrl }) {
 
   const modificar = () => {
     const url = apiUrl + "/" + params.id;
-    const data = { name: formulario.name };
+    const data = {
+      name: formulario.name,
+      breed: formulario.breed,
+      image: formulario.image,
+      color: formulario.color,
+      age: formulario.age,
+      favoriteToy: formulario.favoriteToy,
+      personality: formulario.personality,
+      bio: formulario.bio,
+    };
     axios
       .put(url, data)
       .then((res) => {
