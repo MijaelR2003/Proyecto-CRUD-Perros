@@ -1,10 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate  } from "react-router-dom";
 import { Button, Col, Row, Container, Spinner, Card } from "react-bootstrap";
 
 function ObtenerPerro({ apiUrl }) {
   const [perros, setPerros] = useState([]);
+  const navigate = useNavigate()
 
   useEffect(() => {
     axios
@@ -18,6 +19,21 @@ function ObtenerPerro({ apiUrl }) {
   }, []);
 
   console.log(perros);
+
+  const eliminar =(id)=>{
+    
+    const urlId = apiUrl + "/" + id;
+    axios
+    .delete(urlId)
+    .then((res)=>{
+      console.log(res)
+      navigate(0)
+    })
+    .catch((err)=>{
+      console.log(err)
+      alert("Algo salio mal")
+    })
+  }
 
   return (
     <>
@@ -49,7 +65,7 @@ function ObtenerPerro({ apiUrl }) {
                     >
                       Actualizar
                     </Button>{" "}
-                    <Button as={Link} to={"/"} variant="danger" size="sm"style={{width:"50%"}}>
+                    <Button onClick={()=>{eliminar(perro._id)}} variant="danger" size="sm"style={{width:"50%"}}>
                       Eliminar
                     </Button>{" "}
                     </Row>
