@@ -3,6 +3,7 @@ import { Container, Button, Form, InputGroup, FloatingLabel } from "react-bootst
 import axios from "axios";
 import useForm from "./useForm";
 import { useNavigate } from "react-router-dom";
+import Boton from "../components/Boton";
 
 function CrearPerro({ apiUrl }) {
   const navigate = useNavigate()
@@ -196,7 +197,9 @@ function CrearPerro({ apiUrl }) {
           />
           </FloatingLabel>
         </InputGroup>
-        <Button onClick={enviarDatos}>Crear Perro</Button>
+        <Boton onClick={enviarDatos} size="">
+          Crear Perro
+        </Boton>
       </Container>
     </>
   );

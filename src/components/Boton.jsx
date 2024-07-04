@@ -8,6 +8,7 @@ function Boton( props ) {
       <Button
         as={Link}
         size="sm"
+        className="mx-1 my-1"
         {...props}
       >
         {props.children}

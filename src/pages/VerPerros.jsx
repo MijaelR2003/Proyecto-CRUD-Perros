@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import { Container, Button, Form, InputGroup } from "react-bootstrap";
 import useForm from "./useForm";
+import Boton from "../components/Boton";
 
 function VerPerros({ apiUrl }) {
   const params = useParams();
@@ -142,9 +143,9 @@ function VerPerros({ apiUrl }) {
             disabled
           />
         </InputGroup>
-        <Button as={Link} to={"/"}>
+        <Boton to={"/"} size="">
           Volver
-        </Button>
+        </Boton>
       </Container>
     </>
   );

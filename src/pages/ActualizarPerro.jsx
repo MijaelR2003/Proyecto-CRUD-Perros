@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import useForm from "./useForm";
 import { Container, Button, Form, InputGroup } from "react-bootstrap";
+import Boton from "../components/Boton";
 
 function ActualizarPerro({ apiUrl }) {
   const params = useParams();
@@ -156,7 +157,9 @@ function ActualizarPerro({ apiUrl }) {
             aria-describedby="basic-addon2"
           />
         </InputGroup>
-        <Button onClick={modificar}>Actualizar Perro</Button>
+        <Boton onClick={modificar} size="">
+          Actualizar Perro
+        </Boton>
       </Container>
     </>
   );
