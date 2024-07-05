@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from 'react-router-dom'
 import { Button } from 'react-bootstrap'
 
-function Boton( props, {modificar} ) {
+function Boton( props) {
   return (
     <>
       <Button
