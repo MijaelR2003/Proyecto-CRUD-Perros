@@ -3,6 +3,8 @@ import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 import useForm from "./useForm";
 import { Container, Button, Form, InputGroup } from "react-bootstrap";
+import Boton from "../components/Boton";
+import Formulario from "../components/Formulario";
 
 function ActualizarPerro({ apiUrl }) {
   const params = useParams();
@@ -54,7 +56,19 @@ function ActualizarPerro({ apiUrl }) {
   }, []);
 
   return (
-    <>
+    <Container>
+      <Formulario
+        disabled={false}
+        formulario={formulario}
+        onChange={(e) => {
+          obtenerFormulario(e);
+        }}
+      />
+      <Boton onClick={modificar} to={"/"} size="">
+        Actualizar Perro
+      </Boton>
+    </Container>
+    /*<>
       <Container>
         <InputGroup className="mb-3">
           <Form.Label className="mx-2 mt-1">Nombre:</Form.Label>
@@ -156,9 +170,11 @@ function ActualizarPerro({ apiUrl }) {
             aria-describedby="basic-addon2"
           />
         </InputGroup>
-        <Button onClick={modificar}>Actualizar Perro</Button>
+        <Boton onClick={modificar} size="">
+          Actualizar Perro
+        </Boton>
       </Container>
-    </>
+    </>*/
   );
 }
 

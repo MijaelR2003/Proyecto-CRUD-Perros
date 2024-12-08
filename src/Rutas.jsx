@@ -5,6 +5,7 @@ import ActualizarPerro from "./pages/ActualizarPerro";
 import Nave from "./pages/Nave";
 import CrearPerro from "./pages/CrearPerro";
 import VerPerros from "./pages/VerPerros";
+import Pruebas from "./pages/Pruebas";
 
 function Rutas() {
   const apiUrl =
@@ -25,6 +26,7 @@ function Rutas() {
             path="/actualizar-perro/:id"
             element={<ActualizarPerro apiUrl={apiUrl} />}
           />
+          <Route path="/prueba" element={<Pruebas/>}/>
         </Routes>
       </BrowserRouter>
     </>

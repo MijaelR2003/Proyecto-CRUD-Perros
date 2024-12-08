@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate  } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button, Col, Row, Container, Spinner, Card } from "react-bootstrap";
+import Boton from "../components/Boton";
 
 function ObtenerPerro({ apiUrl }) {
   const [perros, setPerros] = useState([]);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     axios
@@ -20,20 +21,19 @@ function ObtenerPerro({ apiUrl }) {
 
   console.log(perros);
 
-  const eliminar =(id)=>{
-    
+  const eliminar = (id) => {
     const urlId = apiUrl + "/" + id;
     axios
-    .delete(urlId)
-    .then((res)=>{
-      console.log(res)
-      navigate(0)
-    })
-    .catch((err)=>{
-      console.log(err)
-      alert("Algo salio mal")
-    })
-  }
+      .delete(urlId)
+      .then((res) => {
+        console.log(res);
+        navigate(0);
+      })
+      .catch((err) => {
+        console.log(err);
+        alert("Algo salio mal");
+      });
+  };
 
   return (
     <>
@@ -51,25 +51,29 @@ function ObtenerPerro({ apiUrl }) {
                     <Card.Text>Edad: {perro.age}</Card.Text>
                   </Card.Body>
 
-                  <Button as={Link} to={"/ver-perro/" + perro._id} variant="success" size="sm">
+                  <Boton to={"/ver-perro/" + perro._id} variant="success">
                     Ver
-                  </Button>
-                 <Container>
-                  <Row>
-                    <Button
-                      as={Link}
-                      to={"/actualizar-perro/" + perro._id}
-                      variant="primary"
-                      size="sm"
-                      style={{width:"50%"}}
-                    >
-                      Actualizar
-                    </Button>{" "}
-                    <Button onClick={()=>{eliminar(perro._id)}} variant="danger" size="sm"style={{width:"50%"}}>
-                      Eliminar
-                    </Button>{" "}
+                  </Boton>
+                  <Container>
+                    <Row>
+                      <Boton
+                        to={"/actualizar-perro/" + perro._id}
+                        variant="primary"
+                        style={{ width: "45%" }}
+                      >
+                        Actualizar
+                      </Boton>
+                      <Boton
+                        onClick={() => {
+                          eliminar(perro._id);
+                        }}
+                        variant="danger"
+                        style={{ width: "45%" }}
+                      >
+                        Eliminar
+                      </Boton>
                     </Row>
-                    </Container>
+                  </Container>
                 </Card>
               </Col>
             ))

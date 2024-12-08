@@ -3,6 +3,8 @@ import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 import { Container, Button, Form, InputGroup } from "react-bootstrap";
 import useForm from "./useForm";
+import Boton from "../components/Boton";
+import Formulario from "../components/Formulario";
 
 function VerPerros({ apiUrl }) {
   const params = useParams();
@@ -30,7 +32,13 @@ function VerPerros({ apiUrl }) {
   }, []);
 
   return (
-    <>
+    <Container>
+      <Formulario disabled={true} formulario={formulario}/>
+      <Boton to={"/"} size="">
+        Volver
+      </Boton>
+    </Container>
+    /* <>
       <Container className="mt-4">
         <InputGroup className="mb-3">
           <Form.Label className="mx-2 mt-1">Nombre:</Form.Label>
@@ -142,11 +150,11 @@ function VerPerros({ apiUrl }) {
             disabled
           />
         </InputGroup>
-        <Button as={Link} to={"/"}>
+        <Boton to={"/"} size="">
           Volver
-        </Button>
+        </Boton>
       </Container>
-    </>
+    </>*/
   );
 }
 
